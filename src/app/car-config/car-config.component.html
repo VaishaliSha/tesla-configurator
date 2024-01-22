@@ -1,0 +1,32 @@
+<h2>{{step2}}: {{selectConfigText}}</h2>
+<div class="car-config-cont">
+    <form [formGroup]="configForm">
+        {{configText}}
+        <select formControlName="configSelected" id="configSelect">
+            <option value="">{{chooseDropdown}}</option>
+            <ng-container *ngIf="selectedModelConfig && selectedModelConfig.configs">
+                <ng-container *ngFor="let config of selectedModelConfig.configs; trackBy: trackByFn;">
+                    <option [value]='config.id'>{{config.description}}</option>
+                </ng-container>
+            </ng-container>
+        </select>
+        <ng-container *ngIf="selectedDetails && !!configForm.value.configSelected">
+            <div class="config-info">
+                <p>{{range}}: {{selectedDetails.range}} {{miles}} - {{maxSpeed}}: {{selectedDetails.speed}} - {{cost}}:
+                    {{selectedDetails.price | currency : 'USD'}} </p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="selectedModelConfig && selectedModelConfig.towHitch">
+            <div>
+                <label for="includeTow">{{towHitch}} </label>
+                <input id="includeTow" type="checkbox" formControlName="towHitch">
+            </div>
+        </ng-container>
+        <ng-container *ngIf="selectedModelConfig && selectedModelConfig.yoke">
+            <div>
+                <label for="includeYoke">{{yokeWheel}}</label>
+                <input id="includeYoke" type="checkbox" formControlName="steeringWheel">
+            </div>
+        </ng-container>
+    </form>
+</div>

@@ -1,0 +1,6 @@
+.car-cont {
+    height: 100%;
+    .car-details-page {
+        height: calc(100% - 50px); overflow: auto;
+    }
+}

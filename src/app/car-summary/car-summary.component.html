@@ -1,0 +1,34 @@
+<h2>Step 3: {{summary}}</h2>
+<h4>{{teslaModel}} {{modelDetail.description}} </h4>
+
+<div class="config-details">
+    <div class="individual-config-detail">
+        <p><b>{{currentConfigDetail.configDetails.description}} </b></p>
+        <p>{{currentConfigDetail.configDetails.price | currency : 'USD'}}</p>
+    </div>
+    <div class="individual-config-detail">
+        <p>{{range}}: {{currentConfigDetail.configDetails.range}} {{miles}} - {{maxSpeed}}:
+            {{currentConfigDetail.configDetails.speed}} </p>
+    </div>
+    <div class="individual-config-detail">
+        <p><b>{{carModelDetail.description}}</b></p>
+        <p>{{carModelDetail.price | currency : 'USD'}}</p>
+    </div>
+    @if (currentConfigDetail && currentConfigDetail.towHitch) {
+    <div class="individual-config-detail">
+        <p><b>{{towHitchPack}}</b></p>
+        <p>{{towHitchPackage | currency : 'USD'}}</p>
+    </div>
+    }
+    @if (currentConfigDetail && currentConfigDetail.steeringWheel) {
+    <div class="individual-config-detail">
+        <p><b>{{yokeWheelPack}}</b></p>
+        <p>{{yokeSteeringWheelPackage | currency : 'USD'}}</p>
+    </div>
+    }
+    <div class="total-div">
+        <p><b>TOTAL COST</b></p>
+        <p>{{carConfigPrice + carModelPrice + (currentConfigDetail.steeringWheel ? yokeSteeringWheelPackage: 0) +
+            (currentConfigDetail.towHitch ? towHitchPackage: 0) | currency : 'USD'}}</p>
+    </div>
+</div>

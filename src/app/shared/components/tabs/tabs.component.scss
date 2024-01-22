@@ -1,0 +1,17 @@
+.tab-container{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    button{
+        border: 1px solid #e2dede;
+        border-right: 0px;
+        width: 100%;
+        margin: 0px;
+    }
+    .active {
+        background-color: #666;
+    }
+    button:last-child{
+        border-right: 1px solid #e2dede;
+    }
+}
