@@ -7,8 +7,10 @@ import { CarSummaryComponent } from './car-summary/car-summary.component';
 
 
 export const routes: Routes = [
+    { path: '', redirectTo: AppRouteNames.CAR_MODEL , pathMatch: "full" },
     { path: AppRouteNames.CAR_MODEL, component: CarModelComponent },
     { path: AppRouteNames.CAR_CONFIG, component: CarConfigComponent, canActivate: [carModelGuard] },
     { path: AppRouteNames.CAR_SUMMARY, component: CarSummaryComponent, canActivate: [carModelGuard] },
-    { path: AppRouteNames.FALLBACK, component: CarModelComponent },
+    { path: '**', component: CarModelComponent },
+    
 ];
